@@ -7,13 +7,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AddUsers#newInstance} factory method to
+ * Use the {@link AddUsersFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AddUsers extends Fragment {
+public class AddUsersFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +26,7 @@ public class AddUsers extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public AddUsers() {
+    public AddUsersFragment() {
         // Required empty public constructor
     }
 
@@ -37,8 +39,8 @@ public class AddUsers extends Fragment {
      * @return A new instance of fragment AddUsers.
      */
     // TODO: Rename and change types and number of parameters
-    public static AddUsers newInstance(String param1, String param2) {
-        AddUsers fragment = new AddUsers();
+    public static AddUsersFragment newInstance(String param1, String param2) {
+        AddUsersFragment fragment = new AddUsersFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +61,18 @@ public class AddUsers extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_users, container, false);
+        View root =  inflater.inflate(R.layout.fragment_add_users, container, false);
+        Spinner spinnerRolesType = root.findViewById(R.id.spinnerRoles);
+        String [] roles = {"teacher/admin","student"};
+        // Crear un adaptador para el Spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, roles);
+
+        // Especificar el diseño del menú desplegable
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Asignar el adaptador al Spinner
+        spinnerRolesType.setAdapter(adapter);
+
+        return root;
     }
 }

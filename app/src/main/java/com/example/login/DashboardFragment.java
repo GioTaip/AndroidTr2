@@ -1,8 +1,10 @@
 package com.example.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -90,6 +93,8 @@ public class DashboardFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
         userAdapter = new UserDataAdapter();
 
+        recyclerView.setAdapter(userAdapter);
+
         mSocket.connect();
 
         mSocket.emit("getUsers", 0);
@@ -105,16 +110,18 @@ public class DashboardFragment extends Fragment {
                 requireActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        users = new ArrayList<>();
+                        if (newProducts != null) {
+                            users = new ArrayList<>();
 
-                        for (UserData p : newProducts) {
-                            users.add(p);
+                            for (UserData p : newProducts) {
+                                users.add(p);
+                            }
+                            for (UserData p: newProducts) {
+                                Log.d("userdata", "run: " + p.getName());
+                            }
+                            userAdapter.setUsers(users);
+                            userAdapter.notifyDataSetChanged();
                         }
-                        for (UserData p: newProducts) {
-                            Log.d("userdata", "run: " + p.getName());
-                        }
-                        userAdapter.setUsers(users);
-                        recyclerView.setAdapter(userAdapter);
 
                     }
                 });
@@ -129,7 +136,7 @@ public class DashboardFragment extends Fragment {
     private Socket mSocket;
     {
         try {
-            mSocket = IO.socket("http://192.168.205.68:3777/");
+            mSocket = IO.socket("http://192.168.1.145:3777/");
         } catch (URISyntaxException e) {}
     }
 
