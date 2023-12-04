@@ -90,6 +90,7 @@ public class DashboardFragment extends Fragment {
         View root =  inflater.inflate(R.layout.fragment_dashboard, container, false);
 
         recyclerView = root.findViewById(R.id.recycleView);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
         userAdapter = new UserDataAdapter();
 
@@ -136,7 +137,7 @@ public class DashboardFragment extends Fragment {
     private Socket mSocket;
     {
         try {
-            mSocket = IO.socket("http://192.168.1.145:3777/");
+            mSocket = IO.socket("http://192.168.205.68:3777/");
         } catch (URISyntaxException e) {}
     }
 

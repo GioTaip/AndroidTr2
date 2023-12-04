@@ -3,6 +3,8 @@ package com.example.login;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -12,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -30,12 +33,16 @@ public class WelcomeActivity extends AppCompatActivity {
     DashboardFragment dashboardFragment = new DashboardFragment();
     NotificationsFragment notificationsFragment = new NotificationsFragment();
     WelcomeFragment welcomeFragment = new WelcomeFragment();
+    AddUsersFragment addUsersFragment = new AddUsersFragment();
+
+    FloatingActionButton btnAddProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-
+        // Inflar el diseño de fragment_dashboard
+        View dashboardLayout = getLayoutInflater().inflate(R.layout.fragment_dashboard, null);
         BottomNavigationView navigation = findViewById(R.id.nav_view);
         navigation.setOnItemSelectedListener(navigationSelectedListener);
 
@@ -48,9 +55,19 @@ public class WelcomeActivity extends AppCompatActivity {
 
         loadFragment(welcomeFragment);
 
+        btnAddProfile = dashboardLayout.findViewById(R.id.btnAddProfile);
 
+        btnAddProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddUsersFragment(v);
+            }
+        });
 
-
+    }
+    public void AddUsersFragment(View view) {
+        // Lógica para cargar el fragmento AddUsersFragment
+        loadFragment(addUsersFragment);
     }
 
     private final NavigationBarView.OnItemSelectedListener navigationSelectedListener = new NavigationBarView.OnItemSelectedListener() {

@@ -12,11 +12,13 @@
         android:padding="5dp"
         android:orientation="vertical">
 
+
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="174dp"
+            android:layout_height="161dp"
+            android:layout_gravity="center"
+            android:padding="25dp"
             android:src="@drawable/profile_color" />
 
         <LinearLayout
@@ -43,6 +45,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/edittext_rounded_bg"
                 android:ems="10"
+                android:textColor="@color/white"
                 android:hint="ex.Juan"
                 android:inputType="text"
                 android:textColorHint="#00FFFFFF" />
@@ -68,6 +71,7 @@
                 android:layout_height="57dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
+                android:textColor="@color/white"
                 android:layout_weight="1"
                 android:background="@drawable/edittext_rounded_bg"
                 android:ems="10"
@@ -91,7 +95,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/white"
                 android:fontFamily="sans-serif-black"
-                android:text="CONTRASENYA" />
+                android:text="@string/contrasenya" />
 
             <EditText
                 android:id="@+id/password_input"
@@ -99,6 +103,7 @@
                 android:layout_height="57dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
+                android:textColor="@color/white"
                 android:layout_weight="1"
                 android:background="@drawable/edittext_rounded_bg"
                 android:ems="10"
@@ -109,17 +114,50 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="87dp"
+            android:layout_width="401dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
-            <Spinner
-                android:id="@+id/spinnerRoles"
-                android:layout_width="178dp"
-                android:layout_height="52dp"
+
+            <TextView
+                android:id="@+id/spinnerRole_text"
+                android:layout_width="203dp"
+                android:layout_height="32dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:contentDescription="spinner"
-                android:gravity="start" />
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-black"
+                android:text="@string/role"
+                android:textColor="@color/white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="71dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinnerRoles"
+                    android:layout_width="157dp"
+                    android:layout_height="52dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/edittext_rounded_bg"
+                    android:backgroundTint="@color/white"
+                    android:contentDescription="spinner"
+                    android:gravity="start" />
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="168dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/background_button"
+                    android:padding="10dp"
+                    android:text="Desa" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
