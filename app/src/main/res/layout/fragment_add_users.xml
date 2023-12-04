@@ -127,6 +127,7 @@
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-black"
                 android:text="@string/role"
+
                 android:textColor="@color/white" />
 
             <LinearLayout
