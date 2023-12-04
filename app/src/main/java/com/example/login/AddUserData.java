@@ -1,6 +1,6 @@
 package com.example.login;
 
-public class addUserData {
+public class AddUserData {
     private String nom;
     private String mail;
     private String password;

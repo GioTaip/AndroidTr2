@@ -8,6 +8,6 @@ public interface ApiService {
 
     @POST("authorizationLogin")
     Call<Answer> ResquestLogin (@Body UserRequestLogin user);
-
-
+    @POST("InsertUser")
+    Call<AddUserData> InsertUser(@Body AddUserData user);
 }
