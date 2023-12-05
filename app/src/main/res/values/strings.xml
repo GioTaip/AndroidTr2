@@ -26,5 +26,8 @@
     <string name="correu_electronic">CORREU ELECTRONIC</string>
     <string name="role">ROLE</string>
     <string name="contrasenya">CONTRASENYA</string>
+    <string name="enunciat">Enunciat:</string>
+    <string name="dificultat">Dificultat:</string>
+    <string name="punts">Punts:</string>
 
 </resources>

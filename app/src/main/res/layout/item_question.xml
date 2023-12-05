@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="393dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_height="66dp">
+
+            <TextView
+                android:id="@+id/profile_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:layout_marginLeft="10dp"
+                android:textColor="#000"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/theme_question"
+                android:layout_width="73dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:text="Tittle"
+                android:textAlignment="center" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnAddProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="84dp"
+                android:layout_gravity="right"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="36dp"
+                android:layout_marginTop="5dp"
+                android:clickable="true"
+                android:contentDescription="btnAdd"
+                android:onClick="AddUsersFragment"
+                android:src="@drawable/baseline_keyboard_arrow_down_24" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/information_text"
+            android:layout_width="393dp"
+            android:layout_height="329dp"
+            android:layout_gravity="center"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="41dp">
+
+                    <TextView
+                        android:id="@+id/statement_text"
+                        android:layout_width="66dp"
+                        android:layout_height="29dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/enunciat" />
+
+                    <TextView
+                        android:id="@+id/getStatement"
+                        android:layout_width="match_parent"
+                        android:layout_height="29dp"
+                        android:text="TextView" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/correct_answer_text"
+                        android:layout_width="244dp"
+                        android:layout_height="29dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="Reposta correcta:" />
+
+                    <TextView
+                        android:id="@+id/getAnswerCorrect"
+                        android:layout_width="match_parent"
+                        android:layout_height="29dp"
+                        android:layout_weight="1"
+                        android:text="TextView" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/options_text"
+                        android:layout_width="80dp"
+                        android:layout_height="29dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="Respostas:" />
+
+                    <TextView
+                        android:id="@+id/getAnswer1"
+                        android:layout_width="match_parent"
+                        android:layout_height="29dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="TextView" />
+
+                    <TextView
+                        android:id="@+id/getAnswer2"
+                        android:layout_width="match_parent"
+                        android:layout_height="29dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="TextView" />
+
+                    <TextView
+                        android:id="@+id/getAnswer3"
+                        android:layout_width="match_parent"
+                        android:layout_height="29dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="TextView" />
+
+                    <TextView
+                        android:id="@+id/getAnswer4"
+                        android:layout_width="match_parent"
+                        android:layout_height="29dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="TextView" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="325dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/difficulty_text"
+                        android:layout_width="66dp"
+                        android:layout_height="29dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/dificultat" />
+
+                    <TextView
+                        android:id="@+id/getDifficulty"
+                        android:layout_width="match_parent"
+                        android:layout_height="29dp"
+                        android:layout_weight="1"
+                        android:text="TextView" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/points_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="29dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/punts" />
+
+                    <TextView
+                        android:id="@+id/getPunts"
+                        android:layout_width="match_parent"
+                        android:layout_height="29dp"
+                        android:layout_weight="1"
+                        android:text="TextView" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
