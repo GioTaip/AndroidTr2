@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText username, password;
     private Button loginboton, seepassword;
-    private String URL="http://192.168.1.145:3777/";
+    private String URL="http://192.168.1.74:3777/";
     private ApiService apiService;
 
     private boolean visible = false;

@@ -9,26 +9,26 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="144dp"
         android:layout_margin="8dp"
         card_view:cardCornerRadius="4dp">
 
         <!-- LinearLayout para la disposición de la imagen y detalles -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <!-- ImageView para la imagen -->
             <ImageView
                 android:id="@+id/image_view"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="133dp" />
 
             <!-- LinearLayout para los detalles -->
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="134dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:padding="8dp">
@@ -44,7 +44,7 @@
                 <!-- TextView para la dirección -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <TextView
@@ -65,7 +65,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <TextView
@@ -79,13 +79,13 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="62dp"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/btnEditar"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp"
+                        android:layout_width="70dp"
+                        android:layout_height="50dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
@@ -95,8 +95,8 @@
 
                     <Button
                         android:id="@+id/btnEliminar"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp"
+                        android:layout_width="70dp"
+                        android:layout_height="50dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"

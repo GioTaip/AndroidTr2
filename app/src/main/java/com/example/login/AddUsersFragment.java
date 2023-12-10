@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -38,7 +42,7 @@ public class AddUsersFragment extends Fragment {
     private EditText mail;
     private EditText points;
     private Button send;
-    private String URL="http://192.168.1.145:3777/";
+    private String URL="http://192.168.1.74:3777/";
     private ApiService apiService;
 
 
@@ -80,7 +84,6 @@ public class AddUsersFragment extends Fragment {
         // Inflate the layout for this fragment
         View root =  inflater.inflate(R.layout.fragment_add_users, container, false);
 
-        addUserData = new AddUserData();
         name = root.findViewById(R.id.name_input);
         password = root.findViewById(R.id.password_input);
         mail = root.findViewById(R.id.mail_inputT);
@@ -102,18 +105,41 @@ public class AddUsersFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String nom = name.getText().toString();
-                String contrasenya = password.getText().toString();
                 String correo = mail.getText().toString();
+                String contrasenya = password.getText().toString();
+                String selectedRole = spinnerRolesType.getSelectedItem().toString();
                 int punts = Integer.parseInt(points.getText().toString());
+                Log.d("correo: ", correo);
+                Log.d("contra: ", contrasenya);
 
+
+                // Create the object to insert
+                AddUserData insertUser = new AddUserData(nom, contrasenya, correo,selectedRole, punts);
+
+                // Initialize Retrofit and call the InsertUser API
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(URL)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
 
                 apiService = retrofit.create(ApiService.class);
-                AddUserData insertUser = new AddUserData();
                 Call<AddUserData> call = apiService.InsertUser(insertUser);
+                call.enqueue(new Callback<AddUserData>() {
+                    @Override
+                    public void onResponse(Call<AddUserData> call, Response<AddUserData> response) {
+                        if(response.isSuccessful()){
+                            Log.d("Response", "Si llego");
+                        }
+                        else{
+                            Log.d("Response", "No llego");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<AddUserData> call, Throwable t) {
+                        Log.e("ERROR",t.getMessage());
+                    }
+                });
             }
         });
 
