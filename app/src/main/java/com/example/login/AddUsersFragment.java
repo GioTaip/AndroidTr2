@@ -1,5 +1,6 @@
 package com.example.login;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,7 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +32,14 @@ public class AddUsersFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private AddUserData addUserData;
+    private EditText name;
+    private EditText password;
+    private EditText mail;
+    private EditText points;
+    private Button send;
+    private String URL="http://192.168.1.145:3777/";
+    private ApiService apiService;
 
 
     public AddUsersFragment() {
@@ -58,11 +73,19 @@ public class AddUsersFragment extends Fragment {
         }
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root =  inflater.inflate(R.layout.fragment_add_users, container, false);
+
+        addUserData = new AddUserData();
+        name = root.findViewById(R.id.name_input);
+        password = root.findViewById(R.id.password_input);
+        mail = root.findViewById(R.id.mail_inputT);
+        points = root.findViewById(R.id.punts_input);
+
         Spinner spinnerRolesType = root.findViewById(R.id.spinnerRoles);
         String [] roles = {"teacher/admin","student"};
         // Crear un adaptador para el Spinner
@@ -73,6 +96,26 @@ public class AddUsersFragment extends Fragment {
 
         // Asignar el adaptador al Spinner
         spinnerRolesType.setAdapter(adapter);
+
+        send = root.findViewById(R.id.btn_send_user);
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String nom = name.getText().toString();
+                String contrasenya = password.getText().toString();
+                String correo = mail.getText().toString();
+                int punts = Integer.parseInt(points.getText().toString());
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(URL)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                apiService = retrofit.create(ApiService.class);
+                AddUserData insertUser = new AddUserData();
+                Call<AddUserData> call = apiService.InsertUser(insertUser);
+            }
+        });
 
         return root;
     }

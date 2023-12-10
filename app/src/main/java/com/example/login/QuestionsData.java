@@ -3,30 +3,30 @@ package com.example.login;
 import java.util.List;
 
 public class QuestionsData {
-    private String nombre;
-    private List<Pregunta> preguntes;
+    private String name;
+    private List<Question> questions;
 
-    public QuestionsData(String nombre, List<Pregunta> preguntes) {
-        this.nombre = nombre;
-        this.preguntes = preguntes;
+    public QuestionsData(String nombre, List<Question> preguntes) {
+        this.name = nombre;
+        this.questions = preguntes;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public List<Pregunta> getPreguntes() {
-        return preguntes;
+    public List<Question> getQuestions() {
+        return questions;
     }
 
-    public static class Pregunta {
+    public static class Question {
         private String enunciado;
         private String respuesta_correcta;
         private List<String> opciones;
         private String dificultad;
         private int puntuacion;
 
-        public Pregunta(String enunciado, String respuesta_correcta, List<String> opciones, String dificultad, int puntuacion) {
+        public Question(String enunciado, String respuesta_correcta, List<String> opciones, String dificultad, int puntuacion) {
             this.enunciado = enunciado;
             this.respuesta_correcta = respuesta_correcta;
             this.opciones = opciones;

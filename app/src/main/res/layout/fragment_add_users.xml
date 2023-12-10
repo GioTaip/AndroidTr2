@@ -16,14 +16,14 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="392dp"
-            android:layout_height="550dp"
+            android:layout_height="582dp"
             android:layout_gravity="center"
             android:layout_marginTop="65dp"
             app:cardCornerRadius="60dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="587dp"
+                android:layout_height="637dp"
                 android:orientation="vertical">
 
                 <ImageView
@@ -132,20 +132,38 @@
                     android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/spinnerRole_text"
-                        android:layout_width="203dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:fontFamily="sans-serif-black"
-                        android:text="@string/role"
+                        android:orientation="horizontal">
 
-                        android:textColor="@color/black" />
+                        <TextView
+                            android:id="@+id/spinnerRole_text"
+                            android:layout_width="153dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/role"
+
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/punts_text"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/punts"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="71dp"
+                        android:layout_gravity="center"
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
@@ -161,16 +179,33 @@
                             android:gravity="start"
                             android:textColor="@color/black" />
 
-                        <Button
-                            android:id="@+id/button"
-                            android:layout_width="168dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="10dp"
+
+                        <EditText
+                            android:id="@+id/punts_input"
+                            android:layout_width="78dp"
+                            android:layout_height="52dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="45dp"
+                            android:layout_weight="1"
                             android:background="@drawable/edittext_rounded_bg"
-                            android:padding="10dp"
-                            android:text="Desa" />
+                            android:ems="10"
+                            android:hint="ex.Exemple@gmail.com"
+                            android:inputType="text"
+                            android:textColor="@color/black"
+                            android:textColorHighlight="#11F4EEEE"
+                            android:textColorHint="#00FFFFFF" />
+
+
                     </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btn_send_user"
+                        android:layout_gravity="center"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:text="@string/desa" />
 
                 </LinearLayout>
             </LinearLayout>

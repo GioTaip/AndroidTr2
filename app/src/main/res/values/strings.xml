@@ -28,6 +28,7 @@
     <string name="contrasenya">CONTRASENYA</string>
     <string name="enunciat">Enunciat:</string>
     <string name="dificultat">Dificultat:</string>
-    <string name="punts">Punts:</string>
+    <string name="punts">PUNTS</string>
+    <string name="desa">Desa</string>
 
 </resources>

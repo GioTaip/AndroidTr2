@@ -99,25 +99,25 @@ public class DashboardFragment extends Fragment {
         mSocket.connect();
 
         mSocket.emit("getUsers", 0);
-        Log.d("call", "call: no entra");
+        //Log.d("call", "call: no entra");
         mSocket.on("users", new Emitter.Listener() {
 
             @Override
             public void call(Object... args) {
-                Log.d("call", "call: entra");
+                //Log.d("call", "call: entra");
                 Type listType = new TypeToken<List<UserData>>() {}.getType();
                 Gson gson = new Gson();
-                final List<UserData> newProducts = gson.fromJson(args[0].toString(), listType);
+                final List<UserData> newUser = gson.fromJson(args[0].toString(), listType);
                 requireActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (newProducts != null) {
+                        if (newUser != null) {
                             users = new ArrayList<>();
 
-                            for (UserData p : newProducts) {
+                            for (UserData p : newUser) {
                                 users.add(p);
                             }
-                            for (UserData p: newProducts) {
+                            for (UserData p: newUser) {
                                 Log.d("userdata", "run: " + p.getName());
                             }
                             userAdapter.setUsers(users);
@@ -137,7 +137,7 @@ public class DashboardFragment extends Fragment {
     private Socket mSocket;
     {
         try {
-            mSocket = IO.socket("http://192.168.205.68:3777/");
+            mSocket = IO.socket("http://192.168.1.145:3777/");
         } catch (URISyntaxException e) {}
     }
 
