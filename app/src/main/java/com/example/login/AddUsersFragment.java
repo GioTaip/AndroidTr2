@@ -42,7 +42,7 @@ public class AddUsersFragment extends Fragment {
     private EditText mail;
     private EditText points;
     private Button send;
-    private String URL="http://192.168.1.74:3777/";
+    private String URL="http://192.168.1.145:3777/";
     private ApiService apiService;
 
 

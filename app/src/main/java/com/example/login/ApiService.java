@@ -12,5 +12,7 @@ public interface ApiService {
     Call<Answer> ResquestLogin (@Body UserRequestLogin user);
     @POST("InsertUser")
     Call<AddUserData> InsertUser(@Body AddUserData user);
+    @DELETE("deleteUser")
+    Call<DeleteUser> DeleteUser(@Body DeleteUser user);
 
 }
