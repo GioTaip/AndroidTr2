@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class QuestionsDataAdapter extends RecyclerView.Adapter<QuestionsDataAdapter.QuestionsViewHolder> {
+public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.QuestionsViewHolder> {
 
     List<QuestionsData.Question> questions;
 

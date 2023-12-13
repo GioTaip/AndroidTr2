@@ -3,14 +3,19 @@ package com.example.login;
 import java.util.List;
 
 public class QuestionsData {
+    private String _id;
+
     private String name;
     private List<Question> questions;
 
-    public QuestionsData(String nombre, List<Question> preguntes) {
+    public QuestionsData(String _id, String nombre, List<Question> preguntes) {
+        this._id = _id;
         this.name = nombre;
         this.questions = preguntes;
     }
-
+    public String get_id() {
+        return _id;
+    }
     public String getName() {
         return name;
     }

@@ -11,9 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.json.JSONArray;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 
 import io.socket.client.IO;
 import io.socket.client.Socket;
@@ -35,7 +39,10 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private RecyclerView recyclerView;
-    private QuestionsDataAdapter questionAdapter;
+    private QuestionsAdapter questionAdapter;
+    QuestionsData questionsData;
+    List <QuestionsData.Question> questions;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -77,20 +84,36 @@ public class HomeFragment extends Fragment {
         recyclerView = root.findViewById(R.id.recycleView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
-        questionAdapter = new QuestionsDataAdapter();
+        questionAdapter = new QuestionsAdapter();
 
         recyclerView.setAdapter(questionAdapter);
         mSocket.connect();
         mSocket.emit("loadQuestions", 0);
-        Log.d("call", "call: no entra");
         mSocket.on("question", new Emitter.Listener() {
             @Override
             public void call(final Object... args) {
-                Log.d("call", "call: entra");
-                getActivity().runOnUiThread(new Runnable() {
+                Log.d("call", "entra");
+                //Log.d("call", "call: entra");
+                Type listType = new TypeToken<List<QuestionsData>>() {}.getType();
+                Gson gson = new Gson();
+                final List<QuestionsData> newQ = gson.fromJson(args[0].toString(), listType);
+                requireActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        JSONArray data = (JSONArray) args[0];
+                        if (newQ != null) {
+                            questions = new ArrayList<>();
+
+                            for (QuestionsData q : newQ) {
+                                List<QuestionsData.Question> qList = q.getQuestions();
+                                if (qList != null) {
+                                    questions.addAll(qList);
+                                }
+                            }
+
+                            questionAdapter.setQuestions(questions);
+                            questionAdapter.notifyDataSetChanged();
+                        }
+
                     }
                 });
             }
@@ -102,7 +125,7 @@ public class HomeFragment extends Fragment {
     private Socket mSocket;
     {
         try {
-            mSocket = IO.socket("http://192.168.1.145:3777/");
+            mSocket = IO.socket("http://192.168.205.76:3777/");
         }
         catch (URISyntaxException e) {
 

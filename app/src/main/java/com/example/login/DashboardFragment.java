@@ -50,7 +50,7 @@ public class DashboardFragment extends Fragment {
     private RecyclerView recyclerView;
     private UserDataAdapter userAdapter;
     private Button btnDelete;
-    private String URL="http://192.168.1.145:3777/";
+    private String URL="http://192.168.205.76:3777/";
     private ApiService apiService;
     DeleteUser deleteUser;
     UserData userData;
@@ -173,7 +173,7 @@ public class DashboardFragment extends Fragment {
     private Socket mSocket;
     {
         try {
-            mSocket = IO.socket("http://192.168.1.145:3777/");
+            mSocket = IO.socket("http://192.168.205.76:3777/");
         } catch (URISyntaxException e) {}
     }
 

@@ -1,9 +1,11 @@
 package com.example.login;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,9 +44,8 @@ public class AddUsersFragment extends Fragment {
     private EditText mail;
     private EditText points;
     private Button send;
-    private String URL="http://192.168.1.145:3777/";
+    private String URL="http://192.168.205.76:3777/";
     private ApiService apiService;
-
 
     public AddUsersFragment() {
         // Required empty public constructor
@@ -71,6 +72,7 @@ public class AddUsersFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -124,11 +126,15 @@ public class AddUsersFragment extends Fragment {
 
                 apiService = retrofit.create(ApiService.class);
                 Call<AddUserData> call = apiService.InsertUser(insertUser);
+
                 call.enqueue(new Callback<AddUserData>() {
                     @Override
                     public void onResponse(Call<AddUserData> call, Response<AddUserData> response) {
                         if(response.isSuccessful()){
                             Log.d("Response", "Si llego");
+
+                            loadDashboardFragment();
+
                         }
                         else{
                             Log.d("Response", "No llego");
@@ -144,5 +150,13 @@ public class AddUsersFragment extends Fragment {
         });
 
         return root;
+
     }
+    private void loadDashboardFragment() {
+        if (getActivity() != null && getActivity().getSupportFragmentManager() != null) {
+            WelcomeActivity welcomeActivity = (WelcomeActivity) getActivity();
+            welcomeActivity.loadFragment(welcomeActivity.dashboardFragment);
+        }
+    }
+
 }
